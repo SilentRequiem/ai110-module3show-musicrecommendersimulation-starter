@@ -17,17 +17,33 @@ Replace this paragraph with your own summary of what your version does.
 
 ## How The System Works
 
-Explain your design in plain language.
+Real-world recommendation systems often use two main approaches: collaborative filtering and content-based filtering. Collaborative filtering uses data from many users, such as likes, skips, and playlists, to find patterns. Content-based filtering uses the features of the songs themselves, like genre, mood, and energy.
 
-Some prompts to answer:
+My recommender is a simple content-based system. It compares a user’s preferences to song attributes in the dataset and assigns each song a score based on how well it matches the user’s taste.
 
-- What features does each `Song` use in your system
-  - For example: genre, mood, energy, tempo
-- What information does your `UserProfile` store
-- How does your `Recommender` compute a score for each song
-- How do you choose which songs to recommend
+### Features Used
 
-You can include a simple diagram or bullet list if helpful.
+**Song**
+- title
+- artist
+- genre
+- mood
+- energy
+- tempo_bpm
+
+**UserProfile**
+- favorite_genre
+- favorite_mood
+- target_energy
+
+### How Recommendations Are Made
+
+Each song is given a score based on how well it matches the user profile:
+- Songs get points if the genre matches the user’s favorite genre
+- Songs get points if the mood matches the user’s favorite mood
+- Songs get additional points if their energy is close to the user’s target energy
+
+After all songs are scored, they are sorted from highest to lowest score, and the top songs are recommended.
 
 ---
 
