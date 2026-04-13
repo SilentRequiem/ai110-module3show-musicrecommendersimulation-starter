@@ -19,13 +19,6 @@ Real-world recommendation systems often use two main approaches: collaborative f
 
 My recommender is a simple content-based system. It compares a user’s preferences to song attributes in the dataset and assigns each song a score based on how well it matches the user’s taste.
 
-### Features Used
-## How The System Works
-
-Real-world recommendation systems often use two main approaches: collaborative filtering and content-based filtering. Collaborative filtering uses data from many users, such as likes, skips, and playlists, to find patterns. Content-based filtering uses the features of the songs themselves, like genre, mood, and energy.
-
-My recommender is a simple content-based system. It compares a user’s preferences to song attributes in the dataset and assigns each song a score based on how well it matches the user’s taste.
-
 ### Design Plan
 
 My recommender uses a content-based approach. It reads song data from the CSV file, compares each song to a user profile, and gives each song a weighted score. Genre is treated as one of the strongest signals, mood is also important, and numerical features like energy, tempo, acousticness, and valence help measure how close the overall vibe is to the user’s preferences. After scoring all songs, the system sorts them and returns the top recommendations.
@@ -155,117 +148,11 @@ Use this section to document the experiments you ran. For example:
 
 ## Reflection
 
-Read and complete `model_card.md`:
+This project helped me understand how recommendation systems turn structured data into predictions using scoring rules. I learned that even simple systems can feel accurate if they use the right features like energy and mood.
 
-[**Model Card**](model_card.md)
+One thing that stood out is how much small changes affect results. Changing weights or adding features like tempo and acousticness can completely shift which songs are recommended. It showed me how sensitive these systems are.
 
-This project showed how recommenders turn structured data into predictions using scoring systems. Even simple rules can produce realistic results when features like energy and mood are used correctly. However, it also showed how easily bias can appear depending on how features are weighted. This reflects how real-world systems must carefully balance accuracy and fairness.
+Using AI tools helped speed up development, especially for structuring the code and brainstorming ideas. However, I still had to check the logic myself to make sure it matched what I actually wanted the system to do.
 
-
----
-
-## 7. `model_card_template.md`
-
-Combines reflection and model card framing from the Module 3 guidance. :contentReference[oaicite:2]{index=2}  
-
-```markdown
-# 🎧 Model Card - Music Recommender Simulation
-
-## 1. Model Name
-
-Give your recommender a name, for example:
-
-> VibeFinder 1.0
-
----
-
-## 2. Intended Use
-
-- What is this system trying to do
-- Who is it for
-
-Example:
-
-> This model suggests 3 to 5 songs from a small catalog based on a user's preferred genre, mood, and energy level. It is for classroom exploration only, not for real users.
-
----
-
-## 3. How It Works (Short Explanation)
-
-Describe your scoring logic in plain language.
-
-- What features of each song does it consider
-- What information about the user does it use
-- How does it turn those into a number
-
-Try to avoid code in this section, treat it like an explanation to a non programmer.
-
----
-
-## 4. Data
-
-Describe your dataset.
-
-- How many songs are in `data/songs.csv`
-- Did you add or remove any songs
-- What kinds of genres or moods are represented
-- Whose taste does this data mostly reflect
-
----
-
-## 5. Strengths
-
-Where does your recommender work well
-
-You can think about:
-- Situations where the top results "felt right"
-- Particular user profiles it served well
-- Simplicity or transparency benefits
-
----
-
-## 6. Limitations and Bias
-
-Where does your recommender struggle
-
-Some prompts:
-- Does it ignore some genres or moods
-- Does it treat all users as if they have the same taste shape
-- Is it biased toward high energy or one genre by default
-- How could this be unfair if used in a real product
-
----
-
-## 7. Evaluation
-
-How did you check your system
-
-Examples:
-- You tried multiple user profiles and wrote down whether the results matched your expectations
-- You compared your simulation to what a real app like Spotify or YouTube tends to recommend
-- You wrote tests for your scoring logic
-
-You do not need a numeric metric, but if you used one, explain what it measures.
-
----
-
-## 8. Future Work
-
-If you had more time, how would you improve this recommender
-
-Examples:
-
-- Add support for multiple users and "group vibe" recommendations
-- Balance diversity of songs instead of always picking the closest match
-- Use more features, like tempo ranges or lyric themes
-
----
-
-## 9. Personal Reflection
-
-A few sentences about what you learned:
-
-- What surprised you about how your system behaved
-- How did building this change how you think about real music recommenders
-- Where do you think human judgment still matters, even if the model seems "smart"
+This project changed how I think about apps like Spotify. Even though they seem complex, they are built on ideas similar to this, just at a much larger scale with more data. It also showed me that human decisions still matter, especially when choosing features and avoiding bias.
 
