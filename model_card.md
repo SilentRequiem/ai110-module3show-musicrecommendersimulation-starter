@@ -63,12 +63,11 @@ Prompts:
 
 Where the system struggles or behaves unfairly. 
 
-Prompts:  
+One limitation of this system is that it can over-prioritize certain features, especially genre. This can cause songs with the correct label to rank higher even if their overall vibe is not the best match.
 
-- Features it does not consider  
-- Genres or moods that are underrepresented  
-- Cases where the system overfits to one preference  
-- Ways the scoring might unintentionally favor some users  
+Another issue is that the dataset is small, so some genres and moods are underrepresented. This can lead to repeated recommendations and less diversity.
+
+The system also assumes all users can be described using a few numerical features like energy and valence, which oversimplifies real music taste. This could make the system less fair or accurate for users with more complex preferences.
 
 ---
 
@@ -76,14 +75,11 @@ Prompts:
 
 How you checked whether the recommender behaved as expected. 
 
-Prompts:  
+I tested the recommender using multiple user profiles, including high-energy pop, chill lofi, and intense rock. I compared the top results for each profile to see if they matched the expected vibe.
 
-- Which user profiles you tested  
-- What you looked for in the recommendations  
-- What surprised you  
-- Any simple tests or comparisons you ran  
+The results generally made sense. High-energy profiles returned upbeat songs, while low-energy profiles returned calmer tracks. However, some songs appeared across multiple profiles, showing that shared features like energy and valence can influence results across different tastes.
 
-No need for numeric metrics unless you created some.
+I also tested a change to the scoring system by lowering the importance of genre. This increased diversity but sometimes reduced accuracy for users with strong genre preferences.
 
 ---
 

@@ -115,7 +115,7 @@ def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
     preferred_moods = [mood for mood in preferred_moods if mood]
 
     if song["genre"] in preferred_genres:
-        score += user_prefs.get("genre_weight", 2.0)
+        score += user_prefs.get("genre_weight", 1.0)
         reasons.append(f"matches preferred genre {song['genre']}")
 
     if song["mood"] in preferred_moods:

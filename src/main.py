@@ -20,13 +20,41 @@ SAMPLE_USER_PROFILE: Dict = {
     "energy": 0.82,
 }
 
-IMPROVED_USER_PROFILE: Dict = {
+HIGH_ENERGY_POP: Dict = {
     "genres": ["pop", "indie pop", "synthwave"],
     "moods": ["happy", "excited", "moody"],
     "energy": 0.78,
     "tempo_bpm": 118,
     "acousticness": 0.22,
     "valence": 0.74,
+    "genre_weight": 2.0,
+    "mood_weight": 1.25,
+    "tempo_weight": 0.9,
+    "acousticness_weight": 0.8,
+    "valence_weight": 0.7,
+}
+
+CHILL_LOFI: Dict = {
+    "genres": ["lofi", "ambient", "jazz"],
+    "moods": ["chill", "calm", "focused", "relaxed"],
+    "energy": 0.28,
+    "tempo_bpm": 72,
+    "acousticness": 0.82,
+    "valence": 0.60,
+    "genre_weight": 2.0,
+    "mood_weight": 1.25,
+    "tempo_weight": 0.9,
+    "acousticness_weight": 0.8,
+    "valence_weight": 0.7,
+}
+
+INTENSE_ROCK: Dict = {
+    "genres": ["rock", "edm", "hiphop"],
+    "moods": ["intense", "confident", "excited"],
+    "energy": 0.90,
+    "tempo_bpm": 135,
+    "acousticness": 0.12,
+    "valence": 0.55,
     "genre_weight": 2.0,
     "mood_weight": 1.25,
     "tempo_weight": 0.9,
@@ -73,7 +101,7 @@ def print_profile_review() -> None:
     print(f"Chill lofi example:  {chill_lofi}")
     print()
     print("Improved user profile:")
-    print(IMPROVED_USER_PROFILE)
+    print(HIGH_ENERGY_POP)
     print()
     print("Why this helps:")
     print(
@@ -88,27 +116,23 @@ def print_profile_review() -> None:
     print()
 
 
+def print_recommendations(label: str, profile: dict, songs: list) -> None:
+    print(f"\n=== {label} ===\n")
+    recommendations = recommend_songs(profile, songs, k=5)
+
+    for song, score, explanation in recommendations:
+        print(f"{song['title']} - Score: {score:.2f}")
+        print(f"Because: {explanation}")
+        print()
+
+
 def main() -> None:
     songs = load_songs("data/songs.csv")
     print(f"Total songs loaded: {len(songs)}")
 
-    print_profile_review()
-
-    recommendations = recommend_songs(IMPROVED_USER_PROFILE, songs, k=5)
-    print(f"Total recommendations: {len(recommendations)}")
-
-    print("\nTop recommendations:\n")
-    for index, rec in enumerate(recommendations, start=1):
-        song, score, explanation = rec
-        reasons = [reason.strip() for reason in explanation.split(";") if reason.strip()]
-
-        print("=" * 48)
-        print(f"{index}. {song['title']} by {song['artist']}")
-        print(f"Final score: {score:.2f}")
-        print("Reasons:")
-        for reason in reasons:
-            print(f"  - {reason}")
-        print()
+    print_recommendations("High-Energy Pop", HIGH_ENERGY_POP, songs)
+    print_recommendations("Chill Lofi", CHILL_LOFI, songs)
+    print_recommendations("Intense Rock", INTENSE_ROCK, songs)
 
 
 if __name__ == "__main__":

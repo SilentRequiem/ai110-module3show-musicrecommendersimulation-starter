@@ -132,10 +132,15 @@ You can add more tests in `tests/test_recommender.py`.
 
 Use this section to document the experiments you ran. For example:
 
-- Tested a simple profile (pop, happy, high energy) and saw it favored upbeat songs
-- Improved the profile by adding tempo, acousticness, and valence
-- Observed that adding more features created more accurate and varied recommendations
-- Noticed some songs ranked high mainly due to genre, showing weight imbalance
+- The high-energy pop profile recommended upbeat pop, indie pop, and synthwave songs, which matched expectations. Songs like "Sunrise City" and "Rooftop Lights" ranked highest because they matched both genre and mood while also having similar energy and tempo.
+
+- The chill lofi profile recommended slower, more acoustic songs like "Deep Focus" and "Library Rain". These songs had low energy, high acousticness, and calm moods, which matched the intended vibe.
+
+- The intense rock profile recommended high-energy songs like "Fire Within" and "Storm Runner". It also included EDM and hip-hop tracks, showing that the system can generalize across similar high-energy genres.
+
+- One surprising result is that "Gym Hero" appears in multiple profiles. This happens because it has high energy and moderate valence, so it partially matches different profiles even when the genre is not a perfect fit.
+
+- I ran an experiment by reducing the weight of genre in the scoring system. This caused more variety in the recommendations, because songs were no longer ranked mainly by genre match. Instead, features like energy, tempo, and acousticness had more influence. This made the results feel more balanced, but sometimes less accurate for users who strongly prefer one genre.
 
 ---
 
